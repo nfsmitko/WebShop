@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebShop.Data;
 
@@ -11,9 +12,10 @@ using WebShop.Data;
 namespace WebShop.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230209165627_ModifingRoleTable")]
+    partial class ModifingRoleTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -109,13 +111,6 @@ namespace WebShop.Infrastructure.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            UserId = "25a6dc8b-a212-4cd8-9b62-efcdea0c7ab1",
-                            RoleId = "b054a395-079b-452e-a440-68231c633323"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
@@ -165,64 +160,6 @@ namespace WebShop.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Categories");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("37aadfc2-179a-4e6e-a8aa-0f09ce0dc36c"),
-                            CreatedDate = new DateTime(2023, 2, 9, 20, 13, 20, 57, DateTimeKind.Local).AddTicks(8518),
-                            IsDeleted = false,
-                            Name = "Laptops"
-                        },
-                        new
-                        {
-                            Id = new Guid("796209de-79b4-4ca5-9b08-f2c4306ff387"),
-                            CreatedDate = new DateTime(2023, 2, 9, 20, 13, 20, 57, DateTimeKind.Local).AddTicks(8560),
-                            IsDeleted = false,
-                            Name = "Computers"
-                        },
-                        new
-                        {
-                            Id = new Guid("7858db3b-3299-493a-9d87-3830b4f603bc"),
-                            CreatedDate = new DateTime(2023, 2, 9, 20, 13, 20, 57, DateTimeKind.Local).AddTicks(8563),
-                            IsDeleted = false,
-                            Name = "Accessories"
-                        },
-                        new
-                        {
-                            Id = new Guid("0ddb8ef0-0a46-4569-a7a1-9c76fcaee655"),
-                            CreatedDate = new DateTime(2023, 2, 9, 20, 13, 20, 57, DateTimeKind.Local).AddTicks(8565),
-                            IsDeleted = false,
-                            Name = "Smartphone"
-                        },
-                        new
-                        {
-                            Id = new Guid("a211c484-8fb5-4f18-a87e-b2e30101fc67"),
-                            CreatedDate = new DateTime(2023, 2, 9, 20, 13, 20, 57, DateTimeKind.Local).AddTicks(8567),
-                            IsDeleted = false,
-                            Name = "Tablets"
-                        },
-                        new
-                        {
-                            Id = new Guid("00b8b863-7f19-4eb5-8460-c68417db3496"),
-                            CreatedDate = new DateTime(2023, 2, 9, 20, 13, 20, 57, DateTimeKind.Local).AddTicks(8579),
-                            IsDeleted = false,
-                            Name = "Components"
-                        },
-                        new
-                        {
-                            Id = new Guid("56c40de8-294a-453e-82d1-5d055bed3e6b"),
-                            CreatedDate = new DateTime(2023, 2, 9, 20, 13, 20, 57, DateTimeKind.Local).AddTicks(8582),
-                            IsDeleted = false,
-                            Name = "Peripherals"
-                        },
-                        new
-                        {
-                            Id = new Guid("109ccb1d-0a98-4f0f-bbd3-23f2d38251e6"),
-                            CreatedDate = new DateTime(2023, 2, 9, 20, 13, 20, 57, DateTimeKind.Local).AddTicks(8584),
-                            IsDeleted = false,
-                            Name = "Game zone"
-                        });
                 });
 
             modelBuilder.Entity("WebShop.Infrastructure.Data.Entities.Image", b =>
@@ -352,24 +289,6 @@ namespace WebShop.Infrastructure.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "b054a395-079b-452e-a440-68231c633323",
-                            ConcurrencyStamp = "8c2a226d-0072-48e5-a2c5-f045e64e5f74",
-                            CreatedOn = new DateTime(2023, 2, 9, 20, 13, 20, 57, DateTimeKind.Local).AddTicks(8654),
-                            Name = "Admin",
-                            NormalizedName = "ADMIN"
-                        },
-                        new
-                        {
-                            Id = "32644b40-8958-4f7d-a0c1-5eaa91ae497e",
-                            ConcurrencyStamp = "f5741340-d074-437e-9458-49b6d6dbc0f0",
-                            CreatedOn = new DateTime(2023, 2, 9, 20, 13, 20, 57, DateTimeKind.Local).AddTicks(8682),
-                            Name = "User",
-                            NormalizedName = "USER"
-                        });
                 });
 
             modelBuilder.Entity("WebShop.Infrastructure.Data.Entities.SubCategory", b =>
@@ -403,200 +322,6 @@ namespace WebShop.Infrastructure.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("SubCategories");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("ce674d7b-013b-4efc-a5d1-0951b488ddeb"),
-                            CategoryId = new Guid("37aadfc2-179a-4e6e-a8aa-0f09ce0dc36c"),
-                            CreatedDate = new DateTime(2023, 2, 9, 20, 13, 20, 57, DateTimeKind.Local).AddTicks(8730),
-                            IsDeleted = false,
-                            Name = "Laptops"
-                        },
-                        new
-                        {
-                            Id = new Guid("dfa0476d-9531-4865-914b-f1551f473129"),
-                            CategoryId = new Guid("37aadfc2-179a-4e6e-a8aa-0f09ce0dc36c"),
-                            CreatedDate = new DateTime(2023, 2, 9, 20, 13, 20, 57, DateTimeKind.Local).AddTicks(8739),
-                            IsDeleted = false,
-                            Name = "Gaming Laptops"
-                        },
-                        new
-                        {
-                            Id = new Guid("1d38b388-5eb0-4bb3-8279-c18018b36428"),
-                            CategoryId = new Guid("796209de-79b4-4ca5-9b08-f2c4306ff387"),
-                            CreatedDate = new DateTime(2023, 2, 9, 20, 13, 20, 57, DateTimeKind.Local).AddTicks(8742),
-                            IsDeleted = false,
-                            Name = "Computers"
-                        },
-                        new
-                        {
-                            Id = new Guid("be9e90b4-c00d-451b-94ea-ad1b55d2c9f9"),
-                            CategoryId = new Guid("796209de-79b4-4ca5-9b08-f2c4306ff387"),
-                            CreatedDate = new DateTime(2023, 2, 9, 20, 13, 20, 57, DateTimeKind.Local).AddTicks(8745),
-                            IsDeleted = false,
-                            Name = "Gaming Computers"
-                        },
-                        new
-                        {
-                            Id = new Guid("c46cd764-c7bb-4f2f-ba25-ac4c110958bb"),
-                            CategoryId = new Guid("7858db3b-3299-493a-9d87-3830b4f603bc"),
-                            CreatedDate = new DateTime(2023, 2, 9, 20, 13, 20, 57, DateTimeKind.Local).AddTicks(8748),
-                            IsDeleted = false,
-                            Name = "Laptop Batteries"
-                        },
-                        new
-                        {
-                            Id = new Guid("cce85b6f-b9a7-4be4-a0af-73ed8ec18cc7"),
-                            CategoryId = new Guid("7858db3b-3299-493a-9d87-3830b4f603bc"),
-                            CreatedDate = new DateTime(2023, 2, 9, 20, 13, 20, 57, DateTimeKind.Local).AddTicks(8751),
-                            IsDeleted = false,
-                            Name = "Laptop Bags"
-                        },
-                        new
-                        {
-                            Id = new Guid("1a6b32fb-55f5-4231-a1d7-b5cf564cc715"),
-                            CategoryId = new Guid("0ddb8ef0-0a46-4569-a7a1-9c76fcaee655"),
-                            CreatedDate = new DateTime(2023, 2, 9, 20, 13, 20, 57, DateTimeKind.Local).AddTicks(8754),
-                            IsDeleted = false,
-                            Name = "Smartphones"
-                        },
-                        new
-                        {
-                            Id = new Guid("9c5285d2-615b-4666-9319-e3817a572ca5"),
-                            CategoryId = new Guid("0ddb8ef0-0a46-4569-a7a1-9c76fcaee655"),
-                            CreatedDate = new DateTime(2023, 2, 9, 20, 13, 20, 57, DateTimeKind.Local).AddTicks(8757),
-                            IsDeleted = false,
-                            Name = "Smartphones Apple"
-                        },
-                        new
-                        {
-                            Id = new Guid("f0adbb23-4d6a-45b8-8056-1695948c63a4"),
-                            CategoryId = new Guid("a211c484-8fb5-4f18-a87e-b2e30101fc67"),
-                            CreatedDate = new DateTime(2023, 2, 9, 20, 13, 20, 57, DateTimeKind.Local).AddTicks(8759),
-                            IsDeleted = false,
-                            Name = "Tablets"
-                        },
-                        new
-                        {
-                            Id = new Guid("0e0599a4-2854-451e-bc19-69c5e5a7eca0"),
-                            CategoryId = new Guid("a211c484-8fb5-4f18-a87e-b2e30101fc67"),
-                            CreatedDate = new DateTime(2023, 2, 9, 20, 13, 20, 57, DateTimeKind.Local).AddTicks(8765),
-                            IsDeleted = false,
-                            Name = "Graphics Tablets"
-                        },
-                        new
-                        {
-                            Id = new Guid("506449d5-e28b-43be-9882-4739211dced9"),
-                            CategoryId = new Guid("00b8b863-7f19-4eb5-8460-c68417db3496"),
-                            CreatedDate = new DateTime(2023, 2, 9, 20, 13, 20, 57, DateTimeKind.Local).AddTicks(8768),
-                            IsDeleted = false,
-                            Name = "SSD"
-                        },
-                        new
-                        {
-                            Id = new Guid("a7276329-f79a-42e1-a2c3-8aa64fc943bd"),
-                            CategoryId = new Guid("00b8b863-7f19-4eb5-8460-c68417db3496"),
-                            CreatedDate = new DateTime(2023, 2, 9, 20, 13, 20, 57, DateTimeKind.Local).AddTicks(8771),
-                            IsDeleted = false,
-                            Name = "HDD"
-                        },
-                        new
-                        {
-                            Id = new Guid("42041daf-22b3-40b7-9d8b-a9723518abaf"),
-                            CategoryId = new Guid("00b8b863-7f19-4eb5-8460-c68417db3496"),
-                            CreatedDate = new DateTime(2023, 2, 9, 20, 13, 20, 57, DateTimeKind.Local).AddTicks(8773),
-                            IsDeleted = false,
-                            Name = "Computer Processor"
-                        },
-                        new
-                        {
-                            Id = new Guid("ed8afc98-25ff-4b22-a934-e5e19c2b405b"),
-                            CategoryId = new Guid("00b8b863-7f19-4eb5-8460-c68417db3496"),
-                            CreatedDate = new DateTime(2023, 2, 9, 20, 13, 20, 57, DateTimeKind.Local).AddTicks(8776),
-                            IsDeleted = false,
-                            Name = "Video Card"
-                        },
-                        new
-                        {
-                            Id = new Guid("840bee94-6ed7-40ee-a7bc-2fa09c0726c9"),
-                            CategoryId = new Guid("00b8b863-7f19-4eb5-8460-c68417db3496"),
-                            CreatedDate = new DateTime(2023, 2, 9, 20, 13, 20, 57, DateTimeKind.Local).AddTicks(8778),
-                            IsDeleted = false,
-                            Name = "Memory"
-                        },
-                        new
-                        {
-                            Id = new Guid("b118ffb5-e5ea-4de4-94ed-d399b916087b"),
-                            CategoryId = new Guid("56c40de8-294a-453e-82d1-5d055bed3e6b"),
-                            CreatedDate = new DateTime(2023, 2, 9, 20, 13, 20, 57, DateTimeKind.Local).AddTicks(8780),
-                            IsDeleted = false,
-                            Name = "Keyboard"
-                        },
-                        new
-                        {
-                            Id = new Guid("e498e56f-d873-405e-b983-dc48e2309b06"),
-                            CategoryId = new Guid("56c40de8-294a-453e-82d1-5d055bed3e6b"),
-                            CreatedDate = new DateTime(2023, 2, 9, 20, 13, 20, 57, DateTimeKind.Local).AddTicks(8783),
-                            IsDeleted = false,
-                            Name = "Mause"
-                        },
-                        new
-                        {
-                            Id = new Guid("9dfcb19f-3030-43b0-b82e-6f116826f274"),
-                            CategoryId = new Guid("56c40de8-294a-453e-82d1-5d055bed3e6b"),
-                            CreatedDate = new DateTime(2023, 2, 9, 20, 13, 20, 57, DateTimeKind.Local).AddTicks(8787),
-                            IsDeleted = false,
-                            Name = "Headphones"
-                        },
-                        new
-                        {
-                            Id = new Guid("3c1d177f-f171-4a09-a86d-5ea6f0f818c6"),
-                            CategoryId = new Guid("56c40de8-294a-453e-82d1-5d055bed3e6b"),
-                            CreatedDate = new DateTime(2023, 2, 9, 20, 13, 20, 57, DateTimeKind.Local).AddTicks(8790),
-                            IsDeleted = false,
-                            Name = "Web Camera"
-                        },
-                        new
-                        {
-                            Id = new Guid("269085b4-e4cc-4dd4-bad0-7eac9fea98ac"),
-                            CategoryId = new Guid("56c40de8-294a-453e-82d1-5d055bed3e6b"),
-                            CreatedDate = new DateTime(2023, 2, 9, 20, 13, 20, 57, DateTimeKind.Local).AddTicks(8792),
-                            IsDeleted = false,
-                            Name = "Monitor"
-                        },
-                        new
-                        {
-                            Id = new Guid("b262e059-66bc-40ec-8cae-5693a8ae2d90"),
-                            CategoryId = new Guid("109ccb1d-0a98-4f0f-bbd3-23f2d38251e6"),
-                            CreatedDate = new DateTime(2023, 2, 9, 20, 13, 20, 57, DateTimeKind.Local).AddTicks(8795),
-                            IsDeleted = false,
-                            Name = "Gaming Keyboard"
-                        },
-                        new
-                        {
-                            Id = new Guid("c28b04e4-255b-4ca7-9110-55eb575fef55"),
-                            CategoryId = new Guid("109ccb1d-0a98-4f0f-bbd3-23f2d38251e6"),
-                            CreatedDate = new DateTime(2023, 2, 9, 20, 13, 20, 57, DateTimeKind.Local).AddTicks(8797),
-                            IsDeleted = false,
-                            Name = "Gaming Mause"
-                        },
-                        new
-                        {
-                            Id = new Guid("437b2ac1-88f4-461c-a929-c2194a544950"),
-                            CategoryId = new Guid("109ccb1d-0a98-4f0f-bbd3-23f2d38251e6"),
-                            CreatedDate = new DateTime(2023, 2, 9, 20, 13, 20, 57, DateTimeKind.Local).AddTicks(8800),
-                            IsDeleted = false,
-                            Name = "Gaming Headphones"
-                        },
-                        new
-                        {
-                            Id = new Guid("180538ac-f70f-498f-9a83-454ef8a85a73"),
-                            CategoryId = new Guid("109ccb1d-0a98-4f0f-bbd3-23f2d38251e6"),
-                            CreatedDate = new DateTime(2023, 2, 9, 20, 13, 20, 57, DateTimeKind.Local).AddTicks(8802),
-                            IsDeleted = false,
-                            Name = "Gaming Monitor"
-                        });
                 });
 
             modelBuilder.Entity("WebShop.Infrastructure.Data.Entities.User", b =>
@@ -678,27 +403,6 @@ namespace WebShop.Infrastructure.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "25a6dc8b-a212-4cd8-9b62-efcdea0c7ab1",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "706fc336-cd42-40d8-84ad-057a6dae5c9a",
-                            CreatedDate = new DateTime(2023, 2, 9, 20, 13, 20, 57, DateTimeKind.Local).AddTicks(8876),
-                            Email = "admin@gmail.bg",
-                            EmailConfirmed = true,
-                            FirstName = "Admin",
-                            LastName = "Admin",
-                            LockoutEnabled = false,
-                            NormalizedEmail = "ADMIN@GMAIL.COM",
-                            NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEJubwetbC1THGOQJ58REjOopO7QsT4kYR5KLYGkdEaX6pKNlIykFndD7qTjkUVTQrg==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "055a179f-3292-454d-85ab-090433ae4c55",
-                            TwoFactorEnabled = false,
-                            UserName = "admin"
-                        });
                 });
 
             modelBuilder.Entity("WebShop.Infrastructure.Data.Entities.UserProducts", b =>

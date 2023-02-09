@@ -10,7 +10,7 @@ namespace WebShop.Infrastructure.Data.Entities
 
         [Required]
         [StringLength(MaxCategoryNameLenght)]
-        public string Name { get; set; }
+        public string Name { get; set; } = null!;
 
         public DateTime CreatedDate { get; set; } = DateTime.Now;
 

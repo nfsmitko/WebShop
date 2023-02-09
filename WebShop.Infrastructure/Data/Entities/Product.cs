@@ -11,14 +11,13 @@ namespace WebShop.Infrastructure.Data.Entities
 
         [Required]
         [StringLength(MaxTitleLenght)]
-        public string Title { get; set; }
-
-        [Required]
-        [StringLength(MaxDescriptionLenght)]
-        public string Description { get; set; }
+        public string Title { get; set; } = null!;
 
         [Required]
         public decimal Price { get; set; }
+
+        [Required]
+        public string MainImage { get; set; } = null!;
 
         public DateTime CreatedDate { get; set; } = DateTime.Now;
 
@@ -35,6 +34,8 @@ namespace WebShop.Infrastructure.Data.Entities
         public virtual SubCategory SubCategory { get; set; } = null!;
 
         public ICollection<UserProducts> UserProducts { get; set; } = new List<UserProducts>();
+
+        public ICollection<ProductDescription> ProductDescriptions { get; set; } = new List<ProductDescription>();
 
         public ICollection<Image> Images { get;set; } = new List<Image>();
 

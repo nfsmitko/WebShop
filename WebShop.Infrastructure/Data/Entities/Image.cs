@@ -13,13 +13,13 @@ namespace WebShop.Infrastructure.Data.Entities
     {
         public Guid Id { get; set; } = Guid.NewGuid();
 
-        public string Extension { get; set; }
+        public string Extension { get; set; } = null!;
 
         public Guid ProductId { get; set; }
 
         [Required]
         [ForeignKey(nameof(ProductId))]
-        public virtual Product Product { get; set; }
+        public virtual Product Product { get; set; } = null!;
 
         public DateTime CreatedDate { get; set; } = DateTime.Now;
 
