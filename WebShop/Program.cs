@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using WebShop.Data;
+using WebShop.Extensions;
 using WebShop.Infrastructure.Data.Entities;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,6 +22,7 @@ builder.Services.AddDefaultIdentity<User>(options =>
 }).AddRoles<Role>().AddEntityFrameworkStores<ApplicationDbContext>();
 
 builder.Services.AddRazorPages();
+builder.Services.AddApplicationServices();
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
