@@ -1,5 +1,6 @@
-﻿using WebShop.Core.Repository;
-using WebShop.Core.Repository.IRepository;
+﻿using WebShop.Core.Contracts;
+using WebShop.Core.Services;
+using WebShop.Infrastructure.Repository;
 
 namespace WebShop.Extensions
 {
@@ -7,7 +8,8 @@ namespace WebShop.Extensions
     {
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
-            services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<IRepository, Repository>();
+            services.AddScoped<ICategoryService, CategoryService>();
 
             return services;
         }

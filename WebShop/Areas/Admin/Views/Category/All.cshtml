@@ -1,0 +1,38 @@
+﻿@model IEnumerable<CategoryQueryModel>
+@{
+    ViewBag.Title = "All Category";
+}
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">GameForum Users</h3>
+            </div>
+
+            <div class="card-body table-responsive p-0 text-center justify-content-center">
+                <table class="table table-hover text-nowrap">
+                    <thead>
+                        <tr>
+                            <th>Category Name</th>
+                            <th>Sub Category Count</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var category in Model)
+                        {
+                            <tr>
+                                <td>@category.Name</td>
+                                <td>@category.SubCategories.Count()</td>
+                                <td>
+                                    <a asp-area="Admin" asp-action="Edit" asp-controller="User" asp-route-id="" class="btn btn-block btn-outline-info btn-xs">Edit</a>
+                                    <a asp-area="Admin" asp-action="Roles" asp-controller="User" asp-route-id="" class="btn btn-block btn-outline-warning btn-xs">Roles</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

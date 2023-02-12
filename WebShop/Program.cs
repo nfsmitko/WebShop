@@ -21,6 +21,7 @@ builder.Services.AddDefaultIdentity<User>(options =>
     options.Password.RequireLowercase = false;
 }).AddRoles<Role>().AddEntityFrameworkStores<ApplicationDbContext>();
 
+builder.Services.AddAutoMapper(typeof(WebShop.Core.Services.CategoryService));
 builder.Services.AddRazorPages();
 builder.Services.AddApplicationServices();
 builder.Services.AddControllersWithViews();
