@@ -26,7 +26,6 @@ namespace WebShop.Core.Services
         }
         public async Task<IEnumerable<SubCategoryQueryModel>> GetAllSubCategory(Guid id)
         {
-            //var subCategory = repo.All<Sub>
             return await repo.AllReadonly<SubCategory>().Where(x=>x.CategoryId == id)
                 .ProjectTo<SubCategoryQueryModel>(mapper.ConfigurationProvider)
                 .ToListAsync();

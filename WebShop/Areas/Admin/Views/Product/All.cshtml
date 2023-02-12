@@ -1,0 +1,53 @@
+﻿@model IEnumerable<ProductQueryModel>
+
+@{
+    ViewBag.Title = "All Games";
+}
+
+<h2 class="text-center">@ViewBag.Title</h2>
+<hr />
+
+<div class="text-center row gap-1 justify-content-center">
+    @foreach (var product in Model)
+    {
+        <div class="card col-5 justify-content-center">
+            <h3 class="card-header">@product.Title</h3>
+            <div class="card-body">
+                <h5 class="card-title">Price:</h5>
+                <h6 class="card-subtitle text-muted">@product.Price</h6>
+            </div>
+            <img class="center-block" style="width: 20rem; height: 20rem;"
+             src="/css/Images/@product.MainImage" alt="Product Image">
+
+            <section id="gallery" class="section">
+                @foreach (var img in product.Images)
+                {
+
+                    <img src="/css/Images/@img.Extension" alt="" />
+
+                }
+            </section>
+            <h4 class="card-text">Description:</h4>
+            @foreach (var description in product.ProductDescriptions)
+            {
+                <div class="card-body">
+                    <p class="list-group-item">@description.Description</p>
+                </div>
+            }
+            <div class="card-body">
+                <h5 class="card-title">Rating:</h5>
+                <h6 class="card-subtitle text-muted">@product.CategoryName</h6>
+            </div>
+            <div class="card-body">
+            </div>
+            @*<div class="card-footer text-muted gap-2">
+        <a asp-area="Users" asp-controller="User" asp-action="AddToCollection" asp-route-gameId="@game.Id" class="btn btn-outline-success">Add as Favorite</a>
+        <a asp-area="Users" asp-controller="Post" asp-action="Add" asp-route-gameId="@game.Id" class="btn btn-outline-success">Add Post</a>
+        <a asp-area="Users" asp-controller="Post" asp-action="All" asp-route-gameId="@game.Id" class="btn btn-outline-info">All Posts</a>
+        <a asp-area="Admin" asp-controller="Game" asp-action="Edit" asp-route-gameId="@game.Id" class="btn btn-outline-warning">Edit Game</a>
+        <a asp-area="Admin" asp-controller="Game" asp-action="Delete" asp-route-gameId="@game.Id" class="btn btn-outline-danger">Delete</a>
+        </div>*@
+        </div>
+
+    }
+</div>

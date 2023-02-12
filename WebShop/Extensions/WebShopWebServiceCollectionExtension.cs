@@ -11,6 +11,7 @@ namespace WebShop.Extensions
             services.AddScoped<IRepository, Repository>();
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<ISubCategoryService, SubCategoryService>();
+            services.AddScoped<IProductService, ProductService>();
 
             return services;
         }
