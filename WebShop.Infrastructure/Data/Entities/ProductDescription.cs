@@ -9,6 +9,9 @@ namespace WebShop.Infrastructure.Data.Entities
         public Guid Id { get; set; } = Guid.NewGuid();
 
         [Required]
+        public string Title { get; set; } = null!;
+
+        [Required]
         public string Description { get; set; } = null!;
 
         public Guid ProductId { get; set; }

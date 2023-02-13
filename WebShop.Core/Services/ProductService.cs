@@ -25,7 +25,6 @@ namespace WebShop.Core.Services
         }
         public async Task AddNewProduct(ProductModel model)
         {
-            //var sanitizor = new HtmlSanitizer();
             var product = new Product
             {
                 Title = model.Title,
@@ -34,34 +33,28 @@ namespace WebShop.Core.Services
                 CreatedDate = DateTime.Now,
                 SubCategoryId = model.SubCategoryId,
             };
-            await repo.AddAsync(product);
-            await repo.SaveChangesAsync();
-
-            var productId = await repo.All<Product>().FirstOrDefaultAsync(p => p.Title == model.Title);
             var images = model.Images.Split(" ");
             foreach (var image in images)
             {
                 var img = new Image()
                 {
                     Extension = image,
-                    ProductId = productId.Id,
                     CreatedDate= DateTime.Now,
                 };
-                await repo.AddAsync(img);
+                product.Images.Add(img);
             }
 
-            var descriptions = model.Description.Split("/");
-
-            foreach (var des in descriptions)
+            foreach (var des in model.Description)
             {
                 var description = new ProductDescription()
                 {
-                    Description = des,
-                    ProductId = productId.Id,
-                    CreatedDate= DateTime.Now,                    
+                    Title = des.Title,
+                    Description = des.Description,
+                    CreatedDate = DateTime.Now,
                 };
-                await repo.AddAsync(description);
+                product.ProductDescriptions.Add(description);
             }
+            await repo.AddAsync(product);
             await repo.SaveChangesAsync();
         }
 
