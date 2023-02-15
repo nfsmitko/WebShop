@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebShop.Core.Contracts;
+using WebShop.Core.Models.Categories;
 
 namespace WebShop.Areas.Admin.Controllers
 {
@@ -12,6 +13,21 @@ namespace WebShop.Areas.Admin.Controllers
         public CategoryController(ICategoryService _categoryService)
         {
             categoryService = _categoryService;
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Add()
+        {
+
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Add(CategoryModel model)
+        {
+            await categoryService.AddNewCategory(model);
+
+            return View();
         }
 
         public async Task<IActionResult> All()

@@ -1,16 +1,10 @@
-﻿using AutoMapper.QueryableExtensions;
-using AutoMapper;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using WebShop.Core.Contracts;
-using WebShop.Core.Models.Categories;
-using WebShop.Core.Models.SubCategoies;
-using WebShop.Infrastructure.Repository;
-using WebShop.Infrastructure.Data.Entities;
+﻿using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;
+using WebShop.Core.Contracts;
+using WebShop.Core.Models.SubCategoies;
+using WebShop.Infrastructure.Data.Entities;
+using WebShop.Infrastructure.Repository;
 
 namespace WebShop.Core.Services
 {
@@ -26,7 +20,7 @@ namespace WebShop.Core.Services
         }
         public async Task<IEnumerable<SubCategoryQueryModel>> GetAllSubCategory(Guid id)
         {
-            return await repo.AllReadonly<SubCategory>().Where(x=>x.CategoryId == id)
+            return await repo.AllReadonly<SubCategory>().Where(x=>x.CategoryId == id).OrderBy(sb => sb.Name)
                 .ProjectTo<SubCategoryQueryModel>(mapper.ConfigurationProvider)
                 .ToListAsync();
         }

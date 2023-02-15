@@ -1,4 +1,5 @@
 ﻿using WebShop.Core.Models.Categories;
+using WebShop.Core.Models.Products;
 
 namespace WebShop.Core.Contracts
 {
@@ -6,5 +7,6 @@ namespace WebShop.Core.Contracts
     {
         Task<IEnumerable<CategoryQueryModel>> GetAllCategory();
 
+        Task AddNewCategory(CategoryModel model);
     }
 }
