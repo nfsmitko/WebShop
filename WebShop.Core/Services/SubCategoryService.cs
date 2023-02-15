@@ -18,9 +18,25 @@ namespace WebShop.Core.Services
             repo = _repo;
             mapper = _mapper;
         }
+
+        public async Task<Guid> DeleteSubCategory(Guid id)
+        {
+            var subCategory = await repo.GetByIdAsync<SubCategory>(id);
+
+            subCategory.IsDeleted= true;
+
+            subCategory.DeletedOn = DateTime.Now;
+
+            repo.Update(subCategory);
+
+            await repo.SaveChangesAsync();
+
+            return subCategory.CategoryId;
+        }
+
         public async Task<IEnumerable<SubCategoryQueryModel>> GetAllSubCategory(Guid id)
         {
-            return await repo.AllReadonly<SubCategory>().Where(x=>x.CategoryId == id).OrderBy(sb => sb.Name)
+            return await repo.AllReadonly<SubCategory>().Where(x=>x.CategoryId == id && x.IsDeleted == false).OrderBy(sb => sb.Name)
                 .ProjectTo<SubCategoryQueryModel>(mapper.ConfigurationProvider)
                 .ToListAsync();
         }

@@ -21,5 +21,12 @@ namespace WebShop.Areas.Admin.Controllers
             return View(model);
 
         }
+
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            var categoryId = await subCategoryService.DeleteSubCategory(id);
+
+            return RedirectToAction("All", new { id = categoryId});
+        }
     }
 }

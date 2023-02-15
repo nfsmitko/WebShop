@@ -45,7 +45,7 @@ namespace WebShop.Core.Services
 
         public async Task<IEnumerable<CategoryQueryModel>> GetAllCategory()
         {
-            return await repo.AllReadonly<Category>().OrderBy(c => c.Name)
+            return await repo.AllReadonly<Category>().Where(c => c.IsDeleted == false).OrderBy(c => c.Name)
                 .ProjectTo<CategoryQueryModel>(mapper.ConfigurationProvider)
                 .ToListAsync();
         }
