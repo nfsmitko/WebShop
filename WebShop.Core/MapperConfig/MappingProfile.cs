@@ -12,6 +12,8 @@ namespace WebShop.Core.MapperConfig
         {
             //Category Mapping
             this.CreateMap<Category, CategoryQueryModel>();
+            this.CreateMap<Category, CategoryModel>();
+            this.CreateMap<SubCategory, SubCategoryModel>();
 
             //SubCategory Mapping
             this.CreateMap<SubCategory, SubCategoryQueryModel>();

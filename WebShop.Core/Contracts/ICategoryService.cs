@@ -8,5 +8,9 @@ namespace WebShop.Core.Contracts
         Task<IEnumerable<CategoryQueryModel>> GetAllCategory();
 
         Task AddNewCategory(CategoryModel model);
+
+        Task<CategoryModel> GetCategoryModelById(Guid id);
+
+        Task EditCategory(Guid categoryId, CategoryModel model);
     }
 }

@@ -18,7 +18,6 @@ namespace WebShop.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Add()
         {
-
             return View();
         }
 
@@ -36,6 +35,21 @@ namespace WebShop.Areas.Admin.Controllers
 
             return View(model);
 
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Edit(Guid id)
+        {
+            var category = await categoryService.GetCategoryModelById(id);
+            return View(category);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(Guid id, CategoryModel model)
+        {
+            await categoryService.EditCategory(id, model);
+
+            return RedirectToAction(nameof(All));
         }
 
     }
